@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- COLORES BASE Y SUPERFICIES --- */
+  --color-background: #0f1115;
+  --color-surface: #111318;
+  --color-surface-container-lowest: #0c0e13;
+  --color-surface-container-low: #191c20;
+  --color-surface-container: #1d2024;
+  --color-surface-container-high: #282a2f;
+  --color-surface-container-highest: #33353a;
+  
+  /* --- COLORES DE TEXTO --- */
+  --color-on-background: #e3e2e6;
+  --color-on-surface: #e3e2e6;
+  --color-on-surface-variant: #c4c6d0;
+  
+  /* --- COLORES DE ACENTO (PRIMARY) --- */
+  --color-primary: #b4c5ff;
+  --color-primary-container: #003ea8;
+  --color-on-primary-container: #dbe1ff;
+  
+  /* --- BORDES Y OUTLINES --- */
+  --color-outline: #8d9099;
+  --color-outline-variant: #434655;
+
+  /* --- TIPOGRAFÍAS --- */
+  --font-inter: "Inter", sans-serif;
+  --font-geist: "Geist", monospace;
+
+  --font-body-lg: var(--font-inter);
+  --font-body-md: var(--font-inter);
+  --font-headline-xl: var(--font-inter);
+  --font-headline-lg: var(--font-inter);
+  --font-headline-md: var(--font-inter);
+  --font-headline-sm: var(--font-inter);
+  --font-label-md: var(--font-geist);
+  --font-label-sm: var(--font-geist);
+
+  /* --- ESPACIADOS PERSONALIZADOS --- */
+  --spacing-margin-desktop: 40px;
+  --spacing-margin-mobile: 16px;
+  --spacing-container-max: 1120px;
+  --spacing-section-gap: 80px;
+  --spacing-gutter: 24px;
+}
+
+/* --- TUS CLASES UTILITARIAS PERSONALIZADAS --- */
+@layer utilities {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  
+  .nav-scrolled {
+    background-color: rgba(15, 17, 21, 0.7) !important;
+    backdrop-filter: blur(12px);
+    border-bottom-color: rgba(67, 70, 85, 0.5);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-card {
+    background: rgba(29, 32, 36, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .glow-border {
+    box-shadow: 0 0 15px rgba(0, 62, 168, 0.5);
+    border: 1px solid rgba(180, 197, 255, 0.3);
+  }
+
+  /* Fondo con patrón del Hero y Proyectos */
+  .bg-pattern {
+    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJHXqLNqdyxH45f_e3GSDdNW35Vp4-vacFj0UIO_S0SCYiaavwxylv7FTvvF9waJNSvEZ8Zv6XOC4CZQBPPitETq03wA5lKErwBPqpzIppspQLHisc4HX61A9aNwUdY5Ut0-55sB3_slkARs_DgdVwLbkVpAc9eKzzCsrdNXEb0T0Cmcwd8jFyEXboif2vqDJxhe5uqxN52c2rIM55qJ9fS1gw2C7bTlRIM8VHWFiMc3HHGuNFRD9AvEBxtqlC7L1VVWPIjNVirgQ');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+  }
+  
+  .bg-pattern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 17, 21, 0.85);
+    z-index: 0;
+  }
+  
+  .bg-pattern > * {
+    position: relative;
+    z-index: 1;
+  }
+}
