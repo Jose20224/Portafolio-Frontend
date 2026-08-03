@@ -28,11 +28,11 @@ const About = () => {
               </h3>
               
               <p className="text-on-surface-variant leading-relaxed font-inter text-base">
-                Apasionado por la tecnología y la resolución de problemas mediante soluciones de software bien estructuradas. Tengo experiencia en el diseño y desarrollo de aplicaciones web completas, abarcando desde la arquitectura de bases de datos y la construcción de APIs robustas en el Backend hasta la creación de interfaces de usuario intuitivas y responsivas en el Frontend. Para optimizar mi flujo de trabajo, integro herramientas de inteligencia artificial como apoyo en el diseño de interfaces y en la automatización de tareas durante el desarrollo, lo que me permite trabajar de manera más eficiente sin perder el enfoque en la calidad, la escalabilidad y las buenas prácticas de desarrollo.
+                Apasionado por la tecnología y el desarrollo de soluciones de software eficientes. Tengo experiencia en el diseño y desarrollo de aplicaciones web, desde la arquitectura de bases de datos y la construcción de APIs robustas en el Backend hasta la creación de interfaces modernas y responsivas en el Frontend. Utilizo herramientas de inteligencia artificial para optimizar el diseño de interfaces y agilizar tareas de desarrollo, aumentando la productividad sin comprometer la calidad del software.
               </p>
 
               <p className="text-on-surface-variant leading-relaxed font-inter text-base">
-                Mi enfoque principal está en escribir código limpio, mantenible y escalable, siguiendo buenas prácticas de desarrollo, patrones de diseño y estándares de la industria.
+                Mi enfoque se centra en escribir código limpio, mantenible y escalable, aplicando buenas prácticas, patrones de diseño y estándares de la industria para desarrollar soluciones confiables y de alto rendimiento.
               </p>
 
               {/* Puntos destacados / Filosofía */}
