@@ -12,7 +12,7 @@ const Footer = () => {
               Jose Miguel Rostrand
             </a>
             <p className="text-sm text-on-surface-variant font-geist max-w-sm">
-              Ingeniero de Software & Desarrollador Full Stack enfocado en construir experiencias digitales escalables y modernas.
+              Ingeniero de Sistemas & Desarrollador Full Stack enfocado en construir experiencias digitales escalables y modernas.
             </p>
           </div>
 

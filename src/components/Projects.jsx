@@ -2,7 +2,7 @@
 const projectsData = [
   {
     id: 1,
-    img: "https://tse3.mm.bing.net/th/id/OIP.MNg5diq2QTdikRbNYkbhNwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    img: "https://tse2.mm.bing.net/th/id/OIP.1GVpRFeLbLy6KPY_Mgq-HAHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     title: "E-Commerce API REST",
     description:
       "Plataforma de comercio electrónico con autenticación, pasarela de pagos y panel de administración.",
@@ -13,7 +13,7 @@ const projectsData = [
   },
   {
     id: 2,
-    img: "https://th.bing.com/th/id/R.b148b26e8e0b6247268b6fdaed488c2e?rik=pg66FGum%2f0W8hQ&riu=http%3a%2f%2f247tecno.com%2fwp-content%2fuploads%2f2018%2f05%2fTipos-de-tecnologia.jpg&ehk=crnK8pLfL%2f8OT4sUoqlw5xP1ej%2bFvxiaoynbM8dUyTo%3d&risl=&pid=ImgRaw&r=0",
+    img: "https://tse1.mm.bing.net/th/id/OIP.pRf10FW4dIWF1b6f-a9dqwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     title: "Dashboard Financiero",
     description:
       "Aplicación web para la gestión de finanzas personales con gráficos interactivos y reportes en tiempo real.",

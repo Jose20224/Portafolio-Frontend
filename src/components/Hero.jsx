@@ -22,7 +22,7 @@ const Hero = () => {
 
             {/* Subtítulo / Descripción */}
             <p className="text-lg md:text-xl text-on-surface-variant font-inter max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-              Ingeniero de Software enfocado en construir soluciones digitales modernas, escalables y eficientes, combinando arquitectura de desarrollo con experiencia de usuario.
+              Ingeniero de Sistemas enfocado en construir soluciones digitales modernas, escalables y eficientes, combinando arquitectura de desarrollo para mejorar la experiencia del usuario.
             </p>
 
             {/* Botones de Acción */}
@@ -78,7 +78,7 @@ const Hero = () => {
                 </div>
                 <div>
                   <p className="text-xs text-on-surface-variant font-geist">Especialidad</p>
-                  <p className="text-sm font-semibold text-on-surface font-inter">Software Engineer</p>
+                  <p className="text-sm font-semibold text-on-surface font-inter">Ingeniero de Sistemas</p>
                 </div>
               </div>
             </div>

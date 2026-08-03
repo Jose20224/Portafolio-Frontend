@@ -68,9 +68,9 @@ const Contact = () => {
                     <span className="material-symbols-outlined text-2xl">location_on</span>
                   </div>
                   <div>
-                    <p className="text-xs text-on-surface-variant font-geist">Ubicación</p>
+                    <p className="text-xs text-on-surface-variant font-geist">Ubicación, Nicaragua</p>
                     <p className="text-sm font-semibold text-on-surface font-inter">
-                      Disponible para trabajo Remoto / Híbrido
+                      Disponible para trabajo Remoto / Híbrido / Presencial
                     </p>
                   </div>
                 </div>

@@ -24,11 +24,11 @@ const About = () => {
                 <span className="material-symbols-outlined text-primary text-2xl md:text-3xl leading-none">
                   badge
                 </span>
-                Ingeniero de Software & Desarrollador Full Stack
+                Desarroyador de Software
               </h3>
               
               <p className="text-on-surface-variant leading-relaxed font-inter text-base">
-                Apasionado por la tecnología y la resolución de problemas complejos mediante software bien estructurado. Tengo experiencia diseñando y construyendo aplicaciones web completas, desde la arquitectura de bases de datos y APIs robustas en el Backend, hasta interfaces de usuario intuitivas y responsivas en el Frontend.
+                Apasionado por la tecnología y la resolución de problemas mediante soluciones de software bien estructuradas. Tengo experiencia en el diseño y desarrollo de aplicaciones web completas, abarcando desde la arquitectura de bases de datos y la construcción de APIs robustas en el Backend hasta la creación de interfaces de usuario intuitivas y responsivas en el Frontend. Para optimizar mi flujo de trabajo, integro herramientas de inteligencia artificial como apoyo en el diseño de interfaces y en la automatización de tareas durante el desarrollo, lo que me permite trabajar de manera más eficiente sin perder el enfoque en la calidad, la escalabilidad y las buenas prácticas de desarrollo.
               </p>
 
               <p className="text-on-surface-variant leading-relaxed font-inter text-base">
@@ -66,7 +66,7 @@ const About = () => {
             {/* Tarjeta 1: Experiencia */}
             <div className="glass-card p-6 rounded-2xl border border-outline-variant/30 flex items-center gap-5">
               <div className="p-4 rounded-xl bg-primary-container/40 text-primary font-geist font-bold text-2xl">
-                3+
+                1+
               </div>
               <div>
                 <h4 className="text-base font-semibold text-on-surface font-inter">Años de Experiencia</h4>

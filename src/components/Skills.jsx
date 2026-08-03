@@ -15,9 +15,9 @@ const tools = [
 ];
 
 const interests = [
-  "Inteligencia Artificial & Machine Learning",
-  "Cultura DevOps & Automatización",
-  "Arquitectura de Microservicios",
+  "Desarrollo Backend y Arquitectura de Software",
+  "Desarrollo Web Full Stack",
+  "Ciberseguridad y Desarrollo Seguro",
 ];
 
 const Skills = () => {
