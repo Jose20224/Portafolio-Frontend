@@ -24,7 +24,7 @@ const About = () => {
                 <span className="material-symbols-outlined text-primary text-2xl md:text-3xl leading-none">
                   badge
                 </span>
-                Desarroyador de Software
+                Desarrollador de Software
               </h3>
               
               <p className="text-on-surface-variant leading-relaxed font-inter text-base">

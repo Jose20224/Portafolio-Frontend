@@ -1,3 +1,6 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 // 1. Creamos nuestro arreglo de datos (puedes personalizar esto con tus proyectos reales)
 const projectsData = [
   {
@@ -52,20 +55,21 @@ const Projects = () => {
 
         {/* Grid Dinámico de Proyectos */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {/* Aquí ocurre la magia de React: iteramos sobre el arreglo de datos */}
+          {/* Iteramos sobre el arreglo de datos */}
           {projectsData.map((project) => (
             <div
               key={project.id}
               className="glass-card rounded-2xl p-6 border border-outline-variant/30 hover:border-primary/50 transition-colors duration-300 flex flex-col h-full group"
             >
-              {/* Imagen del proyecto */}
-              <div className="w-full h-48 rounded-xl overflow-hidden mb-6">
+              {/* Imagen del proyecto (Permite ir al detalle individual de cada proyecto) */}
+              <Link to={`/proyecto/${project.id}`} className="w-full h-48 rounded-xl overflow-hidden mb-6 block cursor-pointer">
                 <img
                   src={project.img}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-              </div>
+              </Link>
+              
               {/* Icono del proyecto */}
               <div className="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <span className="material-symbols-outlined text-primary text-2xl">
@@ -73,15 +77,18 @@ const Projects = () => {
                 </span>
               </div>
 
-              {/* Información principal */}
-              <h3 className="text-xl font-bold text-on-surface font-inter mb-3">
-                {project.title}
-              </h3>
+              {/* Información principal con enlace al detalle */}
+              <Link to={`/proyecto/${project.id}`} className="block group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-bold text-on-surface font-inter mb-3">
+                  {project.title}
+                </h3>
+              </Link>
+              
               <p className="text-on-surface-variant text-sm font-inter leading-relaxed flex-grow mb-6">
                 {project.description}
               </p>
 
-              {/* Etiquetas de Tecnologías (Otro .map interno) */}
+              {/* Etiquetas de Tecnologías */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.techStack.map((tech, index) => (
                   <span
@@ -97,6 +104,8 @@ const Projects = () => {
               <div className="flex items-center gap-4 pt-4 border-t border-outline-variant/20 mt-auto">
                 <a
                   href={project.repoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-1.5 text-sm font-geist text-on-surface hover:text-primary transition-colors"
                 >
                   <span className="material-symbols-outlined text-base">
@@ -106,6 +115,8 @@ const Projects = () => {
                 </a>
                 <a
                   href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-1.5 text-sm font-geist text-on-surface hover:text-primary transition-colors"
                 >
                   <span className="material-symbols-outlined text-base">
@@ -120,15 +131,16 @@ const Projects = () => {
 
         {/* Botón Centrado para ver más proyectos */}
         <div className="flex justify-center mt-12">
-          <a
-            href="/todos-los-proyectos"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-primary-container text-on-primary-container font-geist font-medium text-sm hover:bg-primary-container/80 transition-all duration-300 shadow-lg shadow-primary/20 group"
+          {/* Usamos <Link> en lugar de un botón con props manuales */}
+          <Link
+            to="/proyectos"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-primary-container text-on-primary-container font-geist font-medium text-sm hover:bg-primary-container/80 transition-all duration-300 shadow-lg shadow-primary/20 group cursor-pointer border-none text-decoration-none"
           >
             <span>Ver todos los proyectos</span>
             <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">
               arrow_forward
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
