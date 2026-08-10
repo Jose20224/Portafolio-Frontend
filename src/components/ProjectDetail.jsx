@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { projectsData } from '../data/projects';
 
 const ProjectDetail = () => {
@@ -12,7 +13,12 @@ const ProjectDetail = () => {
   }, [id]);
 
   return (
-    <article className="py-12 md:py-20 px-4 md:px-10 max-w-[1000px] mx-auto w-full">
+    <motion.article 
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="py-12 md:py-20 px-4 md:px-10 max-w-[1000px] mx-auto w-full"
+    >
       {/* Navegación de migas de pan / Breadcrumbs */}
       <nav className="flex items-center gap-2 text-xs md:text-sm text-on-surface-variant font-geist mb-8 flex-wrap">
         <Link 
@@ -41,8 +47,13 @@ const ProjectDetail = () => {
         Volver a todos los proyectos
       </Link>
 
-      {/* Encabezado del Proyecto */}
-      <header className="mb-10">
+      {/* Encabezado del Proyecto con Animación */}
+      <motion.header 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+        className="mb-10"
+      >
         <div className="flex items-center gap-3 mb-3">
           <span className="bg-primary/10 text-primary px-3 py-1 rounded-lg text-xs font-semibold font-geist border border-primary/20">
             {project.categoryLabel}
@@ -76,21 +87,33 @@ const ProjectDetail = () => {
             </p>
           </div>
         </div>
-      </header>
+      </motion.header>
 
-      {/* Previsualización Principal de Imagen */}
-      <div className="rounded-2xl overflow-hidden border border-outline-variant/30 bg-surface-container-high mb-12 shadow-2xl">
+      {/* Previsualización Principal de Imagen con Scroll Reveal */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.96 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="rounded-2xl overflow-hidden border border-outline-variant/30 bg-surface-container-high mb-12 shadow-2xl"
+      >
         <img
           src={project.image}
           alt={project.title}
           className="w-full h-[320px] md:h-[480px] object-cover"
         />
-      </div>
+      </motion.div>
 
       {/* Cuerpo del Detalle */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
         {/* Columna Principal: Descripción y Puntos Clave */}
-        <div className="md:col-span-2 space-y-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="md:col-span-2 space-y-8"
+        >
           <section>
             <h2 className="text-xl font-bold text-on-surface font-inter mb-3">
               Visión General del Proyecto
@@ -118,10 +141,16 @@ const ProjectDetail = () => {
               ))}
             </ul>
           </section>
-        </div>
+        </motion.div>
 
         {/* Columna Lateral: Tech Stack y Enlaces */}
-        <div className="space-y-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          className="space-y-8"
+        >
           {/* Botones de acción */}
           <div className="p-6 bg-surface-container-low rounded-2xl border border-outline-variant/30 space-y-3">
             <h3 className="text-sm font-bold uppercase tracking-wider text-on-surface font-geist mb-2">
@@ -165,12 +194,18 @@ const ProjectDetail = () => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
       
       {/* Sección de Colaboradores */}
       {project.collaborators && project.collaborators.length > 0 && (
-        <div className="p-6 bg-surface-container-low rounded-2xl border border-outline-variant/30">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="p-6 bg-surface-container-low rounded-2xl border border-outline-variant/30"
+        >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-bold uppercase tracking-wider text-on-surface font-geist flex items-center gap-2">
               <span className="material-symbols-outlined text-primary text-base">group</span>
@@ -227,9 +262,9 @@ const ProjectDetail = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       )}
-    </article>
+    </motion.article>
   );
 };
 

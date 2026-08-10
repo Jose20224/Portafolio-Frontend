@@ -1,108 +1,143 @@
+import { motion } from 'framer-motion';
+
 const About = () => {
+  // Variantes para el contenedor principal de la sección
+  const sectionVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, // Retraso entre los bloques grandes (Encabezado -> Tarjeta)
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  // Variantes para los bloques contenedores (Tarjetas y marcos principales)
+  const containerItemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.8, 
+        ease: "easeOut",
+        staggerChildren: 0.15, // Una vez que aparece el contenedor, los textos dentro entran después
+        delayChildren: 0.2,    // Asegura un pequeño respiro para que el contenedor tome forma antes del texto
+      } 
+    },
+  };
+
+  // Variantes específicas para las letras, títulos y párrafos internos
+  const textItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: "easeOut" } 
+    },
+  };
+
   return (
-    <section id="about" className="py-20 md:py-28 bg-surface-container-lowest/50 relative">
-      <div className="max-w-[1120px] mx-auto px-4 md:px-10">
+    <motion.section 
+      id="about" 
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      className="py-20 md:py-28 bg-surface-container-lowest/50 relative overflow-hidden"
+    >
+      <div className="max-w-[1000px] mx-auto px-4 md:px-10">
         
         {/* Encabezado de la Sección */}
-        <div className="flex flex-col items-center text-center mb-16 space-y-3">
-          <span className="text-xs font-geist uppercase tracking-widest text-primary font-semibold px-3 py-1 rounded-full bg-primary-container/20 border border-primary/20">
+        <motion.div 
+          variants={containerItemVariants}
+          className="flex flex-col items-center text-center mb-16 space-y-3"
+        >
+          <motion.span variants={textItemVariants} className="text-xs font-geist uppercase tracking-widest text-primary font-semibold px-3 py-1 rounded-full bg-primary-container/20 border border-primary/20">
             Conóceme mejor
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-on-surface font-inter tracking-tight">
+          </motion.span>
+          <motion.h2 variants={textItemVariants} className="text-3xl md:text-4xl font-bold text-on-surface font-inter tracking-tight">
             Sobre mí
-          </h2>
-          <div className="w-12 h-1 bg-primary rounded-full mt-2"></div>
-        </div>
+          </motion.h2>
+          <motion.div variants={textItemVariants} className="w-12 h-1 bg-primary rounded-full mt-2"></motion.div>
+        </motion.div>
 
-        {/* Contenido Principal Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        {/* Tarjeta Principal Unificada */}
+        <motion.div 
+          variants={containerItemVariants}
+          className="glass-card p-8 md:p-12 rounded-3xl border border-outline-variant/30 space-y-8 shadow-sm"
+        >
           
-          {/* Columna Izquierda: Biografía Resumida */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="glass-card p-6 md:p-8 rounded-2xl border border-outline-variant/30 space-y-4">
-              <h3 className="text-xl md:text-1xl font-semibold text-on-surface font-inter flex items-center gap-3">
-                <span className="material-symbols-outlined text-primary text-2xl md:text-3xl leading-none">
-                  badge
-                </span>
-                Desarrollador de Software
+          {/* Cabecera interna (Contenedor del icono y subtítulo) */}
+          <motion.div 
+            variants={textItemVariants}
+            className="flex items-center gap-4 pb-6 border-b border-outline-variant/20"
+          >
+            <div className="p-3.5 rounded-2xl bg-primary-container/30 text-primary">
+              <span className="material-symbols-outlined text-3xl leading-none">
+                terminal
+              </span>
+            </div>
+            <div>
+              <h3 className="text-xl md:text-2xl font-bold text-on-surface font-inter">
+                Desarrollador de Software & Creador de Soluciones
               </h3>
-              
-              <p className="text-on-surface-variant leading-relaxed font-inter text-base">
-                Apasionado por la tecnología y el desarrollo de soluciones de software eficientes. Tengo experiencia en el diseño y desarrollo de aplicaciones web, desde la arquitectura de bases de datos y la construcción de APIs robustas en el Backend hasta la creación de interfaces modernas y responsivas en el Frontend. Utilizo herramientas de inteligencia artificial para optimizar el diseño de interfaces y agilizar tareas de desarrollo, aumentando la productividad sin comprometer la calidad del software.
+              <p className="text-sm text-primary font-medium mt-0.5">
+                Transformando ideas en experiencias digitales eficientes
               </p>
-
-              <p className="text-on-surface-variant leading-relaxed font-inter text-base">
-                Mi enfoque se centra en escribir código limpio, mantenible y escalable, aplicando buenas prácticas, patrones de diseño y estándares de la industria para desarrollar soluciones confiables y de alto rendimiento.
-              </p>
-
-              {/* Puntos destacados / Filosofía */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-outline-variant/20">
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-primary-container/30 text-primary mt-1">
-                    <span className="material-symbols-outlined text-xl">speed</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-on-surface text-sm font-inter">Rendimiento</h4>
-                    <p className="text-xs text-on-surface-variant font-inter">Optimización de carga y ejecución eficiente.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-primary-container/30 text-primary mt-1">
-                    <span className="material-symbols-outlined text-xl">architecture</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-on-surface text-sm font-inter">Escalabilidad</h4>
-                    <p className="text-xs text-on-surface-variant font-inter">Sistemas modulares listos para crecer.</p>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
+          </motion.div>
+          
+          {/* Párrafos */}
+          <motion.div 
+            variants={textItemVariants}
+            className="space-y-4 text-on-surface-variant leading-relaxed font-inter text-base md:text-lg"
+          >
+            <p>
+              Me entusiasma desarrollar aplicaciones web que sobresalgan tanto por su alto rendimiento técnico como por su experiencia de usuario. Mi visión integral abarca desde la arquitectura de bases de datos y la solidez de las APIs en el backend, hasta la creación de interfaces dinámicas, responsivas y atractivas en el frontend, asegurando que cada proyecto no solo cumpla con los estándares de calidad, sino que también ofrezca una experiencia memorable a los usuarios.
+            </p>
 
-          {/* Columna Derecha: Tarjetas de Información y Estadísticas */}
-          <div className="lg:col-span-5 space-y-4">
-            
-            {/* Tarjeta 1: Experiencia */}
-            <div className="glass-card p-6 rounded-2xl border border-outline-variant/30 flex items-center gap-5">
-              <div className="p-4 rounded-xl bg-primary-container/40 text-primary font-geist font-bold text-2xl">
-                1+
+            <p>
+              Aprovecho el potencial de la inteligencia artificial como aliada en mi día a día para agilizar el prototipado, potenciar la eficiencia y asegurar un estándar de calidad elevado, siempre con el objetivo de ofrecer soluciones digitales que no solo cumplan, sino que superen las expectativas de los usuarios.
+            </p>
+          </motion.div>
+
+          {/* Bloque de fortalezas técnicas */}
+          <motion.div 
+            variants={textItemVariants}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-outline-variant/20"
+          >
+            <div className="flex items-start gap-4">
+              <div className="p-2.5 rounded-xl bg-primary-container/30 text-primary mt-1">
+                <span className="material-symbols-outlined text-2xl">bolt</span>
               </div>
               <div>
-                <h4 className="text-base font-semibold text-on-surface font-inter">Años de Experiencia</h4>
-                <p className="text-xs text-on-surface-variant font-inter">Desarrollando soluciones web y de software.</p>
+                <h4 className="font-semibold text-on-surface text-base font-inter">Código Limpio y Escalable</h4>
+                <p className="text-sm text-on-surface-variant font-inter mt-1">
+                  Estructuras modulares pensadas para crecer de la mano del negocio con total mantenibilidad.
+                </p>
               </div>
             </div>
 
-            {/* Tarjeta 2: Formación */}
-            <div className="glass-card p-6 rounded-2xl border border-outline-variant/30 flex items-center gap-5">
-              <div className="p-3.5 rounded-xl bg-surface-container-high text-primary">
-                <span className="material-symbols-outlined text-3xl">school</span>
+            <div className="flex items-start gap-4">
+              <div className="p-2.5 rounded-xl bg-primary-container/30 text-primary mt-1">
+                <span className="material-symbols-outlined text-2xl">verified</span>
               </div>
               <div>
-                <h4 className="text-base font-semibold text-on-surface font-inter">Ingeniería en Sistemas</h4>
-                <p className="text-xs text-on-surface-variant font-inter">Formación universitaria sólida en computación.</p>
+                <h4 className="font-semibold text-on-surface text-base font-inter">Enfoque en Resultados</h4>
+                <p className="text-sm text-on-surface-variant font-inter mt-1">
+                  Compromiso absoluto con la experiencia de usuario y la optimización del rendimiento general.
+                </p>
               </div>
             </div>
+          </motion.div>
 
-            {/* Tarjeta 3: Trabajo en equipo */}
-            <div className="glass-card p-6 rounded-2xl border border-outline-variant/30 flex items-center gap-5">
-              <div className="p-3.5 rounded-xl bg-surface-container-high text-primary">
-                <span className="material-symbols-outlined text-3xl">groups</span>
-              </div>
-              <div>
-                <h4 className="text-base font-semibold text-on-surface font-inter">Trabajo en Equipo</h4>
-                <p className="text-xs text-on-surface-variant font-inter">Colaboración, metodologías ágiles y comunicación.</p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
+        </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 };
 
-export default About;
+export default About; 

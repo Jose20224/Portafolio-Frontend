@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   // Estado opcional para manejar el envío del formulario de manera interactiva
@@ -21,11 +22,24 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-surface-container-lowest/50 relative">
+    <motion.section 
+      id="contact" 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="py-20 md:py-28 bg-surface-container-lowest/50 relative"
+    >
       <div className="max-w-[1120px] mx-auto px-4 md:px-10">
         
-        {/* Encabezado de la Sección */}
-        <div className="flex flex-col items-center text-center mb-16 space-y-3">
+        {/* Encabezado de la Sección con Animación */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-col items-center text-center mb-16 space-y-3"
+        >
           <span className="text-xs font-geist uppercase tracking-widest text-primary font-semibold px-3 py-1 rounded-full bg-primary-container/20 border border-primary/20">
             Hablemos
           </span>
@@ -36,13 +50,19 @@ const Contact = () => {
           <p className="text-on-surface-variant font-inter max-w-xl text-sm md:text-base pt-2">
             ¿Tienes un proyecto en mente, una oportunidad laboral o simplemente quieres saludar? Escríbeme y te responderé lo antes posible.
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid Principal: Info de Contacto y Formulario */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* Columna Izquierda: Información de Contacto */}
-          <div className="lg:col-span-5 space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="lg:col-span-5 space-y-6"
+          >
             <div className="glass-card p-6 md:p-8 rounded-3xl border border-outline-variant/30 space-y-6 shadow-xl">
               <h3 className="text-xl font-bold text-on-surface font-inter">
                 Información de Contacto
@@ -102,10 +122,16 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Columna Derecha: Formulario de Contacto Interactivo */}
-          <div className="lg:col-span-7">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="lg:col-span-7"
+          >
             <div className="glass-card p-6 md:p-8 rounded-3xl border border-outline-variant/30 shadow-xl">
               
               {submitted ? (
@@ -184,12 +210,12 @@ const Contact = () => {
               )}
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 };
 

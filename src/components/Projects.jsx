@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 // 1. Creamos nuestro arreglo de datos (puedes personalizar esto con tus proyectos reales)
 const projectsData = [
@@ -38,12 +39,50 @@ const projectsData = [
   },
 ];
 
+// Variantes de animación para el contenedor del grid (controla el escalonado)
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Retraso de 0.2s entre cada tarjeta
+    },
+  },
+};
+
+// Variantes de animación para cada tarjeta individual (suben y aparecen)
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] },
+  },
+};
+
+// Variante para el encabezado
+const headerVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] },
+  },
+};
+
 const Projects = () => {
   return (
     <section id="projects" className="py-20 md:py-28 relative bg-pattern">
       <div className="max-w-[1120px] mx-auto px-4 md:px-10">
-        {/* Encabezado de la Sección */}
-        <div className="flex flex-col items-center text-center mb-16 space-y-3">
+        
+        {/* Encabezado de la Sección con animación al hacer scroll (ejecuta una vez) */}
+        <motion.div
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="flex flex-col items-center text-center mb-16 space-y-3"
+        >
           <span className="text-xs font-geist uppercase tracking-widest text-primary font-semibold px-3 py-1 rounded-full bg-primary-container/20 border border-primary/20">
             Mi Trabajo
           </span>
@@ -51,14 +90,21 @@ const Projects = () => {
             Proyectos Destacados
           </h2>
           <div className="w-12 h-1 bg-primary rounded-full mt-2"></div>
-        </div>
+        </motion.div>
 
-        {/* Grid Dinámico de Proyectos */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Grid Dinámico de Proyectos con animación escalonada al hacer scroll */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        >
           {/* Iteramos sobre el arreglo de datos */}
           {projectsData.map((project) => (
-            <div
+            <motion.div
               key={project.id}
+              variants={cardVariants}
               className="glass-card rounded-2xl p-6 border border-outline-variant/30 hover:border-primary/50 transition-colors duration-300 flex flex-col h-full group"
             >
               {/* Imagen del proyecto (Permite ir al detalle individual de cada proyecto) */}
@@ -125,12 +171,18 @@ const Projects = () => {
                   Demo
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Botón Centrado para ver más proyectos */}
-        <div className="flex justify-center mt-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex justify-center mt-12"
+        >
           {/* Usamos <Link> en lugar de un botón con props manuales */}
           <Link
             to="/proyectos"
@@ -141,7 +193,7 @@ const Projects = () => {
               arrow_forward
             </span>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
