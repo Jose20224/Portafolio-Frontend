@@ -1,8 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
-// 1. Creamos nuestro arreglo de datos (puedes personalizar esto con tus proyectos reales)
 const projectsData = [
   {
     id: 1,
@@ -39,106 +37,141 @@ const projectsData = [
   },
 ];
 
-// Variantes de animación para el contenedor del grid (controla el escalonado)
-const containerVariants = {
-  hidden: { opacity: 0 },
+/* Animación del encabezado */
+const headerVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
   visible: {
     opacity: 1,
+    y: 0,
     transition: {
-      staggerChildren: 0.2, // Retraso de 0.2s entre cada tarjeta
+      duration: 0.45,
+      ease: "easeOut",
     },
   },
 };
 
-// Variantes de animación para cada tarjeta individual (suben y aparecen)
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+/* Animación del grid */
+const gridVariants = {
+  hidden: {},
   visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] },
+    transition: {
+      staggerChildren: 0.1,
+    },
   },
 };
 
-// Variante para el encabezado
-const headerVariants = {
-  hidden: { opacity: 0, y: -20 },
+/* Animación de cada tarjeta */
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] },
+    transition: {
+      duration: 0.45,
+      ease: "easeOut",
+    },
   },
 };
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 md:py-28 relative bg-pattern">
+    <section
+      id="projects"
+      className="py-20 md:py-28 relative bg-pattern"
+    >
       <div className="max-w-[1120px] mx-auto px-4 md:px-10">
-        
-        {/* Encabezado de la Sección con animación al hacer scroll (ejecuta una vez) */}
+
+        {/* Encabezado */}
         <motion.div
           variants={headerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{
+            once: true,
+            margin: "-80px",
+          }}
           className="flex flex-col items-center text-center mb-16 space-y-3"
         >
           <span className="text-xs font-geist uppercase tracking-widest text-primary font-semibold px-3 py-1 rounded-full bg-primary-container/20 border border-primary/20">
             Mi Trabajo
           </span>
+
           <h2 className="text-3xl md:text-4xl font-bold text-on-surface font-inter tracking-tight">
             Proyectos Destacados
           </h2>
-          <div className="w-12 h-1 bg-primary rounded-full mt-2"></div>
+
+          <div className="w-12 h-1 bg-primary rounded-full mt-2" />
         </motion.div>
 
-        {/* Grid Dinámico de Proyectos con animación escalonada al hacer scroll */}
+
+        {/* Grid */}
         <motion.div
-          variants={containerVariants}
+          variants={gridVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{
+            once: true,
+            margin: "-60px",
+          }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         >
-          {/* Iteramos sobre el arreglo de datos */}
           {projectsData.map((project) => (
-            <motion.div
+            <motion.article
               key={project.id}
               variants={cardVariants}
               className="glass-card rounded-2xl p-6 border border-outline-variant/30 hover:border-primary/50 transition-colors duration-300 flex flex-col h-full group"
             >
-              {/* Imagen del proyecto (Permite ir al detalle individual de cada proyecto) */}
-              <Link to={`/proyecto/${project.id}`} className="w-full h-48 rounded-xl overflow-hidden mb-6 block cursor-pointer">
+
+              {/* Imagen */}
+              <Link
+                to={`/proyecto/${project.id}`}
+                className="w-full h-48 rounded-xl overflow-hidden mb-6 block"
+              >
                 <img
                   src={project.img}
                   alt={project.title}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </Link>
-              
-              {/* Icono del proyecto */}
-              <div className="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+
+
+              {/* Icono */}
+              <div className="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center mb-6">
                 <span className="material-symbols-outlined text-primary text-2xl">
                   {project.icon}
                 </span>
               </div>
 
-              {/* Información principal con enlace al detalle */}
-              <Link to={`/proyecto/${project.id}`} className="block group-hover:text-primary transition-colors">
+
+              {/* Título */}
+              <Link
+                to={`/proyecto/${project.id}`}
+                className="block group-hover:text-primary transition-colors"
+              >
                 <h3 className="text-xl font-bold text-on-surface font-inter mb-3">
                   {project.title}
                 </h3>
               </Link>
-              
+
+
+              {/* Descripción */}
               <p className="text-on-surface-variant text-sm font-inter leading-relaxed flex-grow mb-6">
                 {project.description}
               </p>
 
-              {/* Etiquetas de Tecnologías */}
+
+              {/* Tecnologías */}
               <div className="flex flex-wrap gap-2 mb-6">
-                {project.techStack.map((tech, index) => (
+                {project.techStack.map((tech) => (
                   <span
-                    key={index}
+                    key={tech}
                     className="text-xs font-geist px-2.5 py-1 rounded-md bg-surface-container-highest text-on-surface-variant border border-outline-variant/20"
                   >
                     {tech}
@@ -146,8 +179,10 @@ const Projects = () => {
                 ))}
               </div>
 
-              {/* Enlaces de Acción */}
+
+              {/* Acciones */}
               <div className="flex items-center gap-4 pt-4 border-t border-outline-variant/20 mt-auto">
+
                 <a
                   href={project.repoLink}
                   target="_blank"
@@ -159,6 +194,7 @@ const Projects = () => {
                   </span>
                   Código
                 </a>
+
                 <a
                   href={project.liveLink}
                   target="_blank"
@@ -170,30 +206,37 @@ const Projects = () => {
                   </span>
                   Demo
                 </a>
+
               </div>
-            </motion.div>
+
+            </motion.article>
           ))}
         </motion.div>
 
-        {/* Botón Centrado para ver más proyectos */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+
+        {/* Ver todos */}
+        <motion.div
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{
+            once: true,
+            margin: "-40px",
+          }}
           className="flex justify-center mt-12"
         >
-          {/* Usamos <Link> en lugar de un botón con props manuales */}
           <Link
             to="/proyectos"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-primary-container text-on-primary-container font-geist font-medium text-sm hover:bg-primary-container/80 transition-all duration-300 shadow-lg shadow-primary/20 group cursor-pointer border-none text-decoration-none"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-primary-container text-on-primary-container font-geist font-medium text-sm hover:bg-primary-container/80 transition-all duration-300 shadow-lg shadow-primary/20 group"
           >
             <span>Ver todos los proyectos</span>
+
             <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">
               arrow_forward
             </span>
           </Link>
         </motion.div>
+
       </div>
     </section>
   );

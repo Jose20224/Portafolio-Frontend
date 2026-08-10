@@ -1,39 +1,42 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from "framer-motion";
 
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { Routes, Route, useLocation } from "react-router-dom";
 
-// Componentes para la cuadrícula y el detalle
-import ProjectsGrid from './components/ProjectsGrid';
-import ProjectDetail from './components/ProjectDetail';
-import ScrollToTop from './components/ScrollToTop';
 
-// Configuración de las variantes de la animación de desvanecimiento cruzado
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+
+import ProjectsGrid from "./components/ProjectsGrid";
+import ProjectDetail from "./components/ProjectDetail";
+import ScrollToTop from "./components/ScrollToTop";
+
+
 const pageVariants = {
   initial: {
     opacity: 0,
   },
+
   animate: {
     opacity: 1,
   },
+
   exit: {
     opacity: 0,
   },
 };
 
+
 const pageTransition = {
-  duration: 0.9, // Duración de la transición en segundos (ajústala a tu gusto)
-  ease: 'easeInOut',
+  duration: 0.35,
+  ease: "easeOut",
 };
 
-// Componente para la Página de Inicio (Home) que junta tus secciones principales
+
 function Home() {
   return (
     <>
@@ -46,15 +49,18 @@ function Home() {
   );
 }
 
-// Componente interno que maneja las rutas y la animación AnimatePresence
+
 function AnimatedRoutes() {
   const location = useLocation();
 
   return (
-    // mode="wait" asegura que la página actual termine de desvanecerse antes de mostrar la siguiente
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        {/* Ruta de Inicio */}
+
+      <Routes
+        location={location}
+        key={location.pathname}
+      >
+
         <Route
           path="/"
           element={
@@ -70,7 +76,6 @@ function AnimatedRoutes() {
           }
         />
 
-        {/* Ruta para la cuadrícula completa de todos los proyectos */}
         <Route
           path="/proyectos"
           element={
@@ -85,8 +90,7 @@ function AnimatedRoutes() {
             </motion.div>
           }
         />
-        
-        {/* Ruta con parámetro dinámico para el detalle de un proyecto */}
+
         <Route
           path="/proyecto/:id"
           element={
@@ -101,30 +105,31 @@ function AnimatedRoutes() {
             </motion.div>
           }
         />
+
       </Routes>
+
     </AnimatePresence>
   );
 }
 
+
 function App() {
   return (
-    <>
+    <div className="min-h-screen bg-surface text-on-surface font-geist flex flex-col">
+
       <ScrollToTop />
-      
-      <div className="min-h-screen bg-surface text-on-surface font-geist flex flex-col">
-        {/* Barra de Navegación fija / superior */}
-        <Navbar />
 
-        {/* Definición de Rutas Animadas de la Aplicación */}
-        <main className="flex-grow">
-          <AnimatedRoutes />
-        </main>
+      <Navbar />
 
-        {/* Pie de página global */}
-        <Footer />
-      </div>
-    </>
+      <main className="flex-grow">
+        <AnimatedRoutes />
+      </main>
+
+      <Footer />
+
+    </div>
   );
 }
+
 
 export default App;
