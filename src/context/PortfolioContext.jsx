@@ -49,7 +49,7 @@ export function PortfolioProvider({ children }) {
       apiRequest('/portfolio/social-links'),
       apiRequest('/portfolio/skills'),
       apiRequest('/portfolio/categories'),
-      apiRequest('/portfolio/projects?page=1&limit=100'),
+      apiRequest('/portfolio/projects?page=1&limit=50'),
     ]).then((results) => {
       if (!active) return;
       const value = (index, fallback) => results[index].status === 'fulfilled' ? results[index].value : fallback;
