@@ -28,69 +28,9 @@ export default function Hero() {
             <motion.div variants={item} className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
               <a href="#projects" className="bg-primary-container hover:bg-primary-container/80 text-on-primary-container font-medium px-6 py-3 rounded-xl transition-all shadow-lg glow-border flex items-center gap-2 font-geist text-sm">Ver proyectos <span className="material-symbols-outlined text-lg">arrow_downward</span></a>
               <a href="#contact" className="glass-card hover:bg-surface-container-high text-on-surface font-medium px-6 py-3 rounded-xl border border-outline-variant/50 transition-all flex items-center gap-2 font-geist text-sm">Contáctame <span className="material-symbols-outlined text-lg">mail</span></a>
-            
-{socials.length > 0 && (
-  <motion.div
-    variants={item}
-    className="pt-5 flex flex-wrap items-center justify-center lg:justify-start gap-3"
-  >
-    {socials.map((link) => {
-      const platform = (link.platform || '').toLowerCase();
-
-      const icons = {
-        github: 'code',
-        linkedin: 'work',
-        instagram: 'photo_camera',
-        facebook: 'public',
-        twitter: 'alternate_email',
-        x: 'alternate_email',
-        youtube: 'smart_display',
-        tiktok: 'music_note',
-        website: 'language',
-      };
-
-      const icon = icons[platform] || 'link';
-
-      return (
-        <motion.a
-          key={link.id || link.url}
-          href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ y: -4, scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ duration: 0.2 }}
-          className="
-            group flex items-center gap-3
-            px-4 py-2.5
-            rounded-xl
-            bg-surface-container-high/60
-            border border-outline-variant/40
-            text-on-surface-variant
-            hover:text-primary
-            hover:border-primary/50
-            hover:bg-primary-container/10
-            hover:shadow-lg hover:shadow-primary/10
-            transition-colors duration-300
-          "
-        >
-          <span className="material-symbols-outlined text-xl group-hover:scale-110 transition-transform duration-300">
-            {icon}
-          </span>
-
-          <span className="text-sm font-geist font-medium">
-            {link.label || link.platform}
-          </span>
-
-          <span className="material-symbols-outlined text-base opacity-50 group-hover:opacity-100 transition-opacity">
-            north_east
-          </span>
-        </motion.a>
-      );
-    })}
-  </motion.div>
-)}
-
+            </motion.div>
+            {socials.length > 0 && <motion.div variants={item} className="pt-4 flex items-center justify-center lg:justify-start gap-6 text-on-surface-variant">{socials.map(link => <a key={link.id || link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors text-sm font-geist">{link.label || link.platform}</a>)}</motion.div>}
+          </motion.div>
           <motion.div variants={imageMotion} initial="hidden" animate="visible" className="flex-1 flex justify-center w-full max-w-md lg:max-w-none">
             <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary-container to-primary opacity-25 blur-2xl" />
