@@ -27,7 +27,7 @@ const Footer = () => {
           {/* Redes Sociales del Footer */}
           <div className="flex items-center gap-4">
             <a 
-              href="https://github.com" 
+              href="https://github.com/Jose20224" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="p-2.5 rounded-xl bg-surface-container-high text-on-surface hover:text-primary hover:bg-surface-container-highest transition-colors flex items-center justify-center"
@@ -36,7 +36,7 @@ const Footer = () => {
               <span className="material-symbols-outlined text-xl">code</span>
             </a>
             <a 
-              href="https://linkedin.com" 
+              href="www.linkedin.com/in/jose-rostrad-383183318" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="p-2.5 rounded-xl bg-surface-container-high text-on-surface hover:text-primary hover:bg-surface-container-highest transition-colors flex items-center justify-center"
