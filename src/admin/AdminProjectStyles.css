@@ -1,0 +1,49 @@
+/* Extensión del sistema visual existente del administrador. */
+.ap-project-modal{width:min(1020px,100%);max-height:min(94vh,1100px);overflow-y:auto;scrollbar-color:#456181 transparent}
+.ap-editor-top{position:sticky;top:-25px;z-index:5;background:#101d30;border-bottom:1px solid #344b68;padding:18px 0;margin-top:-12px}
+.ap-editor-top p{font-size:12px;color:#9aadc7;margin:6px 0 0}
+.ap-project-form{display:block}
+.ap-editor-section{padding:23px 0;border-bottom:1px solid #2d4360}
+.ap-editor-section:last-of-type{border-bottom:0}
+.ap-section-heading{display:flex;align-items:flex-start;gap:13px;margin-bottom:20px}
+.ap-section-heading h3{font-weight:750;font-size:16px;color:#e6edf8;margin:0 0 4px}
+.ap-section-heading p{color:#93a9c5;font-size:12px;line-height:1.6;margin:0}
+.ap-section-icon{color:#b6ccff;background:#223a60;border-radius:12px;padding:9px;font-size:22px}
+.ap-section-count{font-size:10px;font-weight:650;background:#203b5d;color:#adcaff;padding:4px 9px;border-radius:99px;vertical-align:middle;margin-left:6px}
+.ap-project-form .ap-two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.ap-project-form .span-2{grid-column:span 2}
+.ap-project-form label{font-size:12px;color:#c2d2e5}
+.ap-help{font-size:10px;color:#8ea4bd;font-weight:400;line-height:1.5;display:block}
+.ap-optional{font-size:10px;background:#2d3a4d;color:#aebdd0;padding:3px 7px;border-radius:6px;margin-left:5px;font-weight:450}
+.ap-repeat-row{display:flex;align-items:flex-start;gap:11px;margin:0 0 14px}
+.ap-repeat-number{flex:0 0 33px;display:grid;place-items:center;height:37px;color:#c0d5ff;border:1px solid #354e73;border-radius:10px;background:#1b3051;font-size:12px}
+.ap-repeat-content{flex:1;min-width:0}
+.ap-repeat-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ap-row-buttons{display:flex;gap:4px;align-self:center}.ap-row-buttons .admin-icon-button{width:30px;height:30px;font-size:17px}.ap-row-buttons button:disabled{opacity:.4;cursor:not-allowed}
+.ap-team-toggle{border:1px solid #314662;background:#14253b;padding:16px;border-radius:12px;display:flex!important;align-items:center;gap:12px!important;cursor:pointer}
+.ap-team-toggle>input{accent-color:#8db7ff;width:18px!important;height:18px;flex:0 0 18px}
+.ap-team-toggle>span{display:block}.ap-team-toggle strong{display:block;color:#e0eafa;font-size:13px}.ap-team-toggle small{display:block;font-size:11px;font-weight:400;color:#96aac3;margin-top:4px}
+.ap-team-entries{margin-top:16px}.ap-collab-card{padding:16px;border-radius:12px;border:1px solid #304765;background:#142339;margin-bottom:12px}
+.ap-card-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;color:#dfeafb;font-size:13px}
+.ap-note{display:flex;align-items:center;gap:10px;background:#1b314f;border:1px solid #334d70;border-radius:11px;padding:12px;color:#abc7e7;font-size:11px;margin:14px 0 0}
+.ap-note .material-symbols-outlined{font-size:19px}
+.ap-image-field{display:grid;gap:10px}.ap-image-actions{display:flex;flex-wrap:wrap;gap:7px}.ap-image-preview{width:100%;max-height:130px;object-fit:cover;border-radius:10px;border:1px solid #36506d}
+.ap-save-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0 2px}
+.ap-save-bar>p{display:flex;gap:8px;align-items:center;color:#91a7c0;font-size:11px;margin:0;max-width:320px}
+.ap-save-bar .material-symbols-outlined{font-size:19px}
+.ap-save-bar>div{display:flex;gap:10px}
+.ap-project-toolbar{flex-wrap:wrap;margin:12px 0 20px}.ap-project-toolbar label{min-width:150px}
+.ap-project-search{background:#0b1627;border:1px solid #30435f;padding:10px 12px;border-radius:9px;color:#e2ebf7;min-width:200px}
+.ap-categories-panel{margin-top:20px}
+.ap-image-overlay{position:fixed;inset:0;z-index:1100;background:#020817dc;display:grid;place-items:center;padding:20px}
+.ap-image-picker{width:min(780px,100%);max-height:85vh;overflow:auto;background:#11213a;border:1px solid #375474;border-radius:18px;padding:22px;color:#e3edfa}
+.ap-image-picker>header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.ap-image-picker h3{font-size:18px;font-weight:700;margin:0}
+.ap-image-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.ap-image-grid>button{min-width:0;background:#192e48;border:1px solid #3d5674;border-radius:12px;overflow:hidden;color:#d5e5fa;cursor:pointer;text-align:left}
+.ap-image-grid>button:hover,.ap-image-grid>button:focus-visible{border-color:#91baff;outline:2px solid #91baff55}
+.ap-image-grid img{width:100%;height:135px;object-fit:cover}
+.ap-image-grid span{display:block;padding:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}
+.ap-sticky-alert{position:sticky;top:75px;z-index:6}
+@media(max-width:680px){.ap-project-modal{padding:16px;max-height:96vh}.ap-editor-top{top:-16px}.ap-project-form .ap-two-col,.ap-repeat-two{grid-template-columns:1fr}.ap-project-form .span-2{grid-column:auto}.ap-repeat-number{display:none}.ap-save-bar{align-items:stretch;flex-direction:column}.ap-save-bar>div{justify-content:flex-end}.ap-image-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ap-project-search{min-width:0;width:100%}}
+@media(prefers-reduced-motion:reduce){.ap-image-grid>button{transition:none}}
