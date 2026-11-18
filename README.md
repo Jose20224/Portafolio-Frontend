@@ -1,16 +1,31 @@
-# React + Vite
+# Portafolio — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación React 19 + Vite con sitio público y panel administrativo.
 
-Currently, two official plugins are available:
+## Configuración
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Crea `.env.local` desde `.env.example` y coloca la URL real del backend NestJS:
 
-## React Compiler
+```env
+VITE_API_BASE_URL=https://TU-SERVICIO.onrender.com/api/v1
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+El archivo `vercel.json` mantiene funcionando las rutas del sitio y del panel al abrirlas directamente. En Vercel, registra esa misma variable en el entorno Production y vuelve a desplegar. No publiques `SUPABASE_SECRET_KEY`, `service_role` ni otras credenciales secretas en variables `VITE_`.
 
-## Expanding the ESLint configuration
+## Desarrollo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```powershell
+npm ci
+npm run dev
+```
+
+## Rutas administrativas
+
+- `/admin/login`
+- `/admin`
+- `/admin/proyectos`
+- `/admin/mensajes`
+- `/admin/perfil`
+- `/admin/archivos`
+
+El panel no crea administradores. Debe existir un usuario en Supabase Auth con entrada activa en `public.admin_users` y rol `owner` o `editor`.
